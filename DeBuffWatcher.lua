@@ -485,6 +485,7 @@ function CombatEnter()
     in_combat = true
     countdown = 0
     DeBuffWatcher_frame:SetBackgroundColor(0,0,0,DeBuffWatcher_config["background"]/100)
+    DeBuffWatcher_frame:SetVisible(false)
 end
 
 
