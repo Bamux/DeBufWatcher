@@ -9,7 +9,7 @@ Download latest Version: https://github.com/Bamux/DeBuffWatcher/archive/master.z
 
 Commands:
 - /dbw check - start raid buff check
-- /dbw me - monitor only my buffs (switch on/off default is off)
+- /dbw me - monitor only my weaponstone flask bufffood and etrenal (switch on/off default is off)
 - /dbw font=X - to change font size (default=12)
 - /dbw background=X - to change background transparency (X=0-100)
 - /dbw seconds=X - Remaining time of the buffs until a warning occurs in seconds(X = 0 - 600)
