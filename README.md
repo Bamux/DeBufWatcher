@@ -1,5 +1,5 @@
 # DeBufWatcher 0.1
-Monitors if all important buffs and debuffs have been used in a raid for the MMORPG Rift.
+Monitors if all important buffs and debuffs in a raid for the MMORPG Rift.
 The addon also checks the buffs (Weaponstone, Flask, Food, Eternal Buffs) of all players in a raid. 
 The buff check is triggered with a rdy check or with /dbw check. With /dbw me you can activate only your own buffs are checked.
 
