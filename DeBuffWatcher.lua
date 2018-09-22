@@ -443,7 +443,7 @@ end
 
 
 local function DeBuffWatcher_update()
-    if not in_combat and countdown > 0 and (Inspect.Time.Real() - timeStamp) > 2 then
+    if in_combat == false and countdown > 0 and (Inspect.Time.Real() - timeStamp) > 2 then
         timeStamp = Inspect.Time.Real()
         if (countdown - Inspect.Time.Frame()) > -0.5 then
             DeBuffWatcher()
