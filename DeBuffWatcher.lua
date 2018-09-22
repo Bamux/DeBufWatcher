@@ -269,89 +269,91 @@ local function DeBuffWatcher()
             else
                 buffs = Inspect.Buff.List(groupmember)
             end
-            if buffs and player.role ~= "tank" then
-                for buffid, typeid in pairs(buffs) do
-                    local detail = Inspect.Buff.Detail(groupmember, buffid)
-                    if detail and player then
-                        if detail.rune then
-                            if player.calling == "mage" or player.calling == "cleric" then
-                                if detail.rune == "r143A1D7A79A201D6" then -- Faetouched Powerstone = r143A1D7A79A201D6
-                                    if detail.remaining > tonumber(DeBuffWatcher_config["seconds"]) then
-                                        weaponstone = true
+            if buffs and player then
+                if player.role ~= "tank" then
+                    for buffid, typeid in pairs(buffs) do
+                        local detail = Inspect.Buff.Detail(groupmember, buffid)
+                        if detail and player then
+                            if detail.rune then
+                                if player.calling == "mage" or player.calling == "cleric" then
+                                    if detail.rune == "r143A1D7A79A201D6" then -- Faetouched Powerstone = r143A1D7A79A201D6
+                                        if detail.remaining > tonumber(DeBuffWatcher_config["seconds"]) then
+                                            weaponstone = true
+                                        end
+                                        if detail.remaining > 0 then
+                                            weaponstone_duration = detail.remaining
+                                        end
                                     end
-                                    if detail.remaining > 0 then
-                                        weaponstone_duration = detail.remaining
-                                    end
-                                end
-                            else
-                                if detail.rune == "rFA65F5184E42C822" or detail.rune == "r70B0A3843EC153B8" then -- Atramentium Whetstone = rFA65F5184E42C822, Atramentium Oilstone = r70B0A3843EC153B8
-                                    if detail.remaining > tonumber(DeBuffWatcher_config["seconds"]) then
-                                        weaponstone = true
-                                    end
-                                    if detail.remaining > 0 then
-                                        weaponstone_duration = detail.remaining
+                                else
+                                    if detail.rune == "rFA65F5184E42C822" or detail.rune == "r70B0A3843EC153B8" then -- Atramentium Whetstone = rFA65F5184E42C822, Atramentium Oilstone = r70B0A3843EC153B8
+                                        if detail.remaining > tonumber(DeBuffWatcher_config["seconds"]) then
+                                            weaponstone = true
+                                        end
+                                        if detail.remaining > 0 then
+                                            weaponstone_duration = detail.remaining
+                                        end
                                     end
                                 end
                             end
-                        end
-                        if detail.type then
-                            if detail.type == "B5161AA0023BAEFD1" then -- Spirit of the Arcane Mage
-                                if detail.remaining > tonumber(DeBuffWatcher_config["seconds"]) then
-                                    eternal_mage = true
-                                end
-                            end
-                            if detail.type == "B1A7C914C6A849564" then -- Spirit of Divinity
-                                if detail.remaining > tonumber(DeBuffWatcher_config["seconds"]) then
-                                    eternal_cleric = true
-                                end
-                            end
-                            if detail.type == "B5E5E107B687FEDAA" then -- Spirit of the Shadows
-                                if detail.remaining > tonumber(DeBuffWatcher_config["seconds"]) then
-                                    eternal_rogue = true
-                                end
-                            end
-                            if detail.type == "B0EF28442078DA6CD" then -- Spirit of Arms
-                                if detail.remaining > tonumber(DeBuffWatcher_config["seconds"]) then
-                                    eternal_warrior = true
-                                end
-                            end
-                            if detail.type == "B1CD787B134A73183" then -- Spirit of the Wilds
-                                if detail.remaining > tonumber(DeBuffWatcher_config["seconds"]) then
-                                    eternal_primalist = true
-                                end
-                            end
-                            if player.calling == "mage" or player.calling == "cleric" then
-                                if detail.type == "B76F46FAA030D4A53" or detail.type == "B599B39124D958B4F" then --  Visionary Brightsurge Vial = B76F46FAA030D4A53, Prophetic Brightsurge Vial = B599B39124D958B4F
+                            if detail.type then
+                                if detail.type == "B5161AA0023BAEFD1" then -- Spirit of the Arcane Mage
                                     if detail.remaining > tonumber(DeBuffWatcher_config["seconds"]) then
-                                        flask = true
-                                    end
-                                    if detail.remaining > 0 then
-                                        flask_duration = detail.remaining
+                                        eternal_mage = true
                                     end
                                 end
-                                if detail.type == "B40C3D8E1646C6DD1" then --  Gedlo Curry Pot (SP) = B40C3D8E2646C6DD1
+                                if detail.type == "B1A7C914C6A849564" then -- Spirit of Divinity
                                     if detail.remaining > tonumber(DeBuffWatcher_config["seconds"]) then
-                                        food = true
-                                    end
-                                    if detail.remaining > 0 then
-                                        food_duration = detail.remaining
+                                        eternal_cleric = true
                                     end
                                 end
-                            else
-                                if detail.type == "B6A8C5F8010D4EFBB" or detail.type == "B03ABEAB575CC9A8E" then --  Visionary Powersurge Vial = B6A8C5F8110D4EFBB, Prophetic Powersurge Vial = B03ABEAB575CC9A8E
+                                if detail.type == "B5E5E107B687FEDAA" then -- Spirit of the Shadows
                                     if detail.remaining > tonumber(DeBuffWatcher_config["seconds"]) then
-                                        flask = true
-                                    end
-                                    if detail.remaining > 0 then
-                                        flask_duration = detail.remaining
+                                        eternal_rogue = true
                                     end
                                 end
-                                if detail.type == "B40C3D8E33D686C51" then --  Gedlo Curry Pot (AP) = B40C3D8E43D686C51
+                                if detail.type == "B0EF28442078DA6CD" then -- Spirit of Arms
                                     if detail.remaining > tonumber(DeBuffWatcher_config["seconds"]) then
-                                        food = true
+                                        eternal_warrior = true
                                     end
-                                    if detail.remaining > 0 then
-                                        food_duration = detail.remaining
+                                end
+                                if detail.type == "B1CD787B134A73183" then -- Spirit of the Wilds
+                                    if detail.remaining > tonumber(DeBuffWatcher_config["seconds"]) then
+                                        eternal_primalist = true
+                                    end
+                                end
+                                if player.calling == "mage" or player.calling == "cleric" then
+                                    if detail.type == "B76F46FAA030D4A53" or detail.type == "B599B39124D958B4F" then --  Visionary Brightsurge Vial = B76F46FAA030D4A53, Prophetic Brightsurge Vial = B599B39124D958B4F
+                                        if detail.remaining > tonumber(DeBuffWatcher_config["seconds"]) then
+                                            flask = true
+                                        end
+                                        if detail.remaining > 0 then
+                                            flask_duration = detail.remaining
+                                        end
+                                    end
+                                    if detail.type == "B40C3D8E1646C6DD1" then --  Gedlo Curry Pot (SP) = B40C3D8E2646C6DD1
+                                        if detail.remaining > tonumber(DeBuffWatcher_config["seconds"]) then
+                                            food = true
+                                        end
+                                        if detail.remaining > 0 then
+                                            food_duration = detail.remaining
+                                        end
+                                    end
+                                else
+                                    if detail.type == "B6A8C5F8010D4EFBB" or detail.type == "B03ABEAB575CC9A8E" then --  Visionary Powersurge Vial = B6A8C5F8110D4EFBB, Prophetic Powersurge Vial = B03ABEAB575CC9A8E
+                                        if detail.remaining > tonumber(DeBuffWatcher_config["seconds"]) then
+                                            flask = true
+                                        end
+                                        if detail.remaining > 0 then
+                                            flask_duration = detail.remaining
+                                        end
+                                    end
+                                    if detail.type == "B40C3D8E33D686C51" then --  Gedlo Curry Pot (AP) = B40C3D8E43D686C51
+                                        if detail.remaining > tonumber(DeBuffWatcher_config["seconds"]) then
+                                            food = true
+                                        end
+                                        if detail.remaining > 0 then
+                                            food_duration = detail.remaining
+                                        end
                                     end
                                 end
                             end
