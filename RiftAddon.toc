@@ -1,6 +1,6 @@
 ﻿Identifier = "dbc"
  
-Name = "DeBuff Check"
+Name = "DeBuffWatcher"
  
 Description = "This addon check your raid buffs at each ready check.\n\n/dbw check - start raid buff check\n/dbw me - monitor only my buffs (switch on/off default is off)\n/dbw font=X - to change font size (default=12)\n/dbw background=X - to change background transparency (X = 0 - 100)\n/dbw seconds=X - Remaining time of the buffs until a warning occurs in seconds(X = 0 - 600)\n/dbw reset - restore the default settings"
  
