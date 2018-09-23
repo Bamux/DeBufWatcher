@@ -92,7 +92,7 @@ local function check_target(target)
                         Increased_Nonphysical_Damage_Taken_2 = true
                     end
                 elseif target == "player" then
-                    if detail.type == "B40B9609C0DF37AF1" or detail.type == "BFD4F3DEDCF4401E7" or detail.type == "B02F72F8374F5ACB7" then -- Increases damage done by 5% (Archon: Volcanic Bomb, Beastmaster: Call of Savagery, Mystic: )
+                    if detail.type == "B40B9609C0DF37AF1" or detail.type == "BFD4F3DEDCF4401E7" or detail.type == "B02F72F8374F5ACB7" then -- Increases damage done by 5% (Archon: Volcanic Bomb, Beastmaster: Call of Savagery, Mystic: Call of Savagery)
                         Damage_Buff_1 = true
                     end
                     if detail.type == "B54E7963BB7F26353" then -- Increases damage done by 5% (Mystic: Primal Savagery)
@@ -101,7 +101,7 @@ local function check_target(target)
                     if detail.type == "B3789B303AAC4EED9" or detail.type == "BFBA778B2D2CEE7B1" or detail.type == "B1262F33677492EDD" then -- 5% Crit Chance (Archon: Earthen Barrage,Beasmaster: Call of Blood, Mystic: Precise Target)
                         Crit_Chance_Buff = true
                     end
-                    if detail.type == "B75CF79A3A7B75E32" or detail.type == "B44E09C3BAC84FAF8" then -- +5% Str/Dex/Int/Wis/End  (Bard: Motif of Bravery, Oracel: Inspiration of Battle)
+                    if detail.type == "B75CF79A3A7B75E32" or detail.type == "Inspiration of Battle" then -- +5% Str/Dex/Int/Wis/End  (Bard: Motif of Bravery, Oracel: Inspiration of Battle)
                         Crit_Chance_Buff_3 = true
                     end
                     if detail.type == "B798CF51711D54B71" or detail.type == "B0E9C7498E1524C2B" then -- +5% Str/Dex/Int/Wis/End  (Oracel: Vitale Inspiration, Bard: Resonance)
@@ -128,7 +128,7 @@ local function check_target(target)
                     if detail.type == "B65677DAB403EB0C9" or detail.type == "B2B02AF47B53C21FC" or detail.type == "BFBB53A78D37A5FC9" or detail.type == "B652E7F8D09C92616" or detail.type == "B6DDCD00446FC9FFA" then -- Armor Resi (Archon: Arcane Aegis, Bard; Anthem of Glory, Beastmaster: Bond of Shelter, Oracel: Defensive Favor, Mystic: living armor)
                         Armor_Resistance_Buff = true
                     end
-                    if detail.type == "B60F47F310B4793F6" or detail.type == "BFB1E91C33E5F87CC" or detail.type == "BFA15035328F46502" then -- Damage Reduce (Bard: Motif of Tenacity, Bm: Call of Stone, Oracel: Inspiration of the Keep)
+                    if detail.type == "B60F47F310B4793F6" or detail.type == "BFB1E91C33E5F87CC" or detail.type == "B13FEC95AAB509ADD" then -- Damage Reduce (Bard: Motif of Tenacity, Bm: Call of Stone, Oracel: Inspiration of the Keep)
                         Reduced_Damage_Taken_1 = true
                     end
                     if detail.type == "B0FA41E09E7A89F58" or detail.type == "BFC309907EA2F0FBB" then -- Increase Healing (Bard: Motif of Regeneration, Oracel: Inspiration of Survival)
@@ -157,7 +157,7 @@ local function check_target(target)
                 end
             end
             if Damage_Buff_1 == false then
-                missing_debuffs = missing_debuffs .. " 5 % Damage (Archon Bm) \n"
+                missing_debuffs = missing_debuffs .. " 5 % Damage (Archon Bm Mystic) \n"
             end
             if Crit_Chance_Buff == false then
                 missing_debuffs = missing_debuffs .. " 5% Crit Chance (Archon Bm Mystic) \n"
