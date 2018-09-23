@@ -5,7 +5,7 @@ The buff check is triggered with a rdy check or with /dbw check.
 
 Download latest Version: https://github.com/Bamux/DeBuffWatcher/archive/master.zip
 
-![addon](https://cdn.discordapp.com/attachments/374932500910309379/493142832538714116/unknown.png)
+![addon](https://cdn.discordapp.com/attachments/374932500910309379/493521815566549007/unknown.png)
 
 Commands:
 - /dbw check - start raid buff check
