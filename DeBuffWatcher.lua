@@ -101,9 +101,9 @@ local function check_target(target)
                     if detail.type == "B3789B303AAC4EED9" or detail.type == "BFBA778B2D2CEE7B1" or detail.type == "B1262F33677492EDD" then -- 5% Crit Chance (Archon: Earthen Barrage,Beasmaster: Call of Blood, Mystic: Precise Target)
                         Crit_Chance_Buff = true
                     end
-                    if detail.type == "B75CF79A3A7B75E32" or detail.type == "Inspiration of Battle" then -- +5% Str/Dex/Int/Wis/End  (Bard: Motif of Bravery, Oracel: Inspiration of Battle)
-                        Crit_Chance_Buff_3 = true
-                    end
+--                    if detail.type == "B75CF79A3A7B75E32" or detail.type == "Inspiration of Battle" then -- 1% Crit Chance   (Bard: Motif of Bravery, Oracel: Inspiration of Battle)
+--                        Crit_Chance_Buff_3 = true
+--                    end
                     if detail.type == "B798CF51711D54B71" or detail.type == "B0E9C7498E1524C2B" then -- +5% Str/Dex/Int/Wis/End  (Oracel: Vitale Inspiration, Bard: Resonance)
                         Stat_Buff_2 = true
                     end
