@@ -110,9 +110,9 @@ local function check_target(target)
                     if detail.type == "BFB94CE4EDD7620E2" or detail.type == "B75CF79A3A7B75E32" or detail.type == "B44E09C3BAC84FAF8" or detail.type == "B40BA5956C492EA27" then --  Ap Sp Buff (Archon: Granite Salvo,  Bard: Motif of Bravery, Oracel: Inspiration of Battle, Mystic: Aerial Boon)
                         AP_SP_Buff_2 = true
                     end
-                    if detail.type == "B40BA5956C492EA27" or detail.type == "B44E09C3BAC84FAF8" then -- Ap Sp Str Dex Int Wis (Mystic: Aerial Boon, Oracel: Inspiration of Battle overwrite Ariel Boom)
-                        Stat_Buff_Mystic = true
-                    end
+--                    if detail.type == "B40BA5956C492EA27" or detail.type == "B44E09C3BAC84FAF8" then -- Ap Sp Str Dex Int Wis (Mystic: Aerial Boon, Oracel: Inspiration of Battle overwrite Ariel Boom)
+--                        Stat_Buff_Mystic = true
+--                    end
                     if detail.type == "B51B584CC19F8B2C4" or detail.type == "B72AED2881E9C8CD7" then -- Increases Strength, Dexterity, Intelligence, and Wisdom (Archon: Vitality of Stone, Beastmaster: Bond of Power)
                         Stat_Buff_1 = true
                     end
@@ -177,9 +177,9 @@ local function check_target(target)
             if AP_SP_Buff_2 == false then
                 missing_debuffs = missing_debuffs .. " Ap Sp (Archon Bard Oracel Mytic) \n"
             end
-            if Stat_Buff_Mystic == false then
-                missing_debuffs = missing_debuffs .. " Ap Sp Str Dex Int Wis (Mystic) \n"
-            end
+--            if Stat_Buff_Mystic == false then
+--                missing_debuffs = missing_debuffs .. " Ap Sp Str Dex Int Wis (Mystic) \n"
+--            end
             if Stat_Buff_1 == false then
                 missing_debuffs = missing_debuffs .. " Str Dex Int Wis (Archon Bm) \n"
             end
