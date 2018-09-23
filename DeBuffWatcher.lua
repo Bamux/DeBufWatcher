@@ -1,7 +1,7 @@
 local in_combat = false
 local countdown = 0
 local timeStamp = 0
-local raid = false
+local raid = true
 
 
 function create_ui()
@@ -164,7 +164,7 @@ local function check_target(target)
                 missing_debuffs = missing_debuffs .. " 5% Mainstats (Bard Oracel) \n"
             end
             if AP_SP_Buff_2 == false then
-                missing_debuffs = missing_debuffs .. " Ap Sp (Archon Bard Oracel Mytic) \n"
+                missing_debuffs = missing_debuffs .. " Ap Sp (Archon Bard Oracel Mystic) \n"
             end
             if Stat_Buff_1 == false then
                 missing_debuffs = missing_debuffs .. " Str Dex Int Wis (Archon Bm) \n"
@@ -286,90 +286,88 @@ local function DeBuffWatcher()
                 buffs = Inspect.Buff.List(groupmember)
             end
             if buffs and player then
-                if player.role ~= "tank" then
-                    for buffid, typeid in pairs(buffs) do
-                        local detail = Inspect.Buff.Detail(groupmember, buffid)
-                        if detail and player then
-                            if detail.rune then
-                                if player.calling == "mage" or player.calling == "cleric" then
-                                    if detail.rune == "r143A1D7A79A201D6" then -- Faetouched Powerstone = r143A1D7A79A201D6
-                                        if detail.remaining > tonumber(DeBuffWatcher_config["seconds"]) then
-                                            weaponstone = true
-                                        end
-                                        if detail.remaining > 0 then
-                                            weaponstone_duration = detail.remaining
-                                        end
+                for buffid, typeid in pairs(buffs) do
+                    local detail = Inspect.Buff.Detail(groupmember, buffid)
+                    if detail and player then
+                        if detail.rune then
+                            if player.calling == "mage" or player.calling == "cleric" then
+                                if detail.rune == "r143A1D7A79A201D6" then -- Faetouched Powerstone = r143A1D7A79A201D6
+                                    if detail.remaining > tonumber(DeBuffWatcher_config["seconds"]) then
+                                        weaponstone = true
                                     end
-                                else
-                                    if detail.rune == "rFA65F5184E42C822" or detail.rune == "r70B0A3843EC153B8" then -- Atramentium Whetstone = rFA65F5184E42C822, Atramentium Oilstone = r70B0A3843EC153B8
-                                        if detail.remaining > tonumber(DeBuffWatcher_config["seconds"]) then
-                                            weaponstone = true
-                                        end
-                                        if detail.remaining > 0 then
-                                            weaponstone_duration = detail.remaining
-                                        end
+                                    if detail.remaining > 0 then
+                                        weaponstone_duration = detail.remaining
+                                    end
+                                end
+                            else
+                                if detail.rune == "rFA65F5184E42C822" or detail.rune == "r70B0A3843EC153B8" then -- Atramentium Whetstone = rFA65F5184E42C822, Atramentium Oilstone = r70B0A3843EC153B8
+                                    if detail.remaining > tonumber(DeBuffWatcher_config["seconds"]) then
+                                        weaponstone = true
+                                    end
+                                    if detail.remaining > 0 then
+                                        weaponstone_duration = detail.remaining
                                     end
                                 end
                             end
-                            if detail.type then
-                                if detail.type == "B5161AA0023BAEFD1" then -- Spirit of the Arcane Mage
+                        end
+                        if detail.type then
+                            if detail.type == "B5161AA0023BAEFD1" then -- Spirit of the Arcane Mage
+                                if detail.remaining > tonumber(DeBuffWatcher_config["seconds"]) then
+                                    eternal_mage = true
+                                end
+                            end
+                            if detail.type == "B1A7C914C6A849564" then -- Spirit of Divinity
+                                if detail.remaining > tonumber(DeBuffWatcher_config["seconds"]) then
+                                    eternal_cleric = true
+                                end
+                            end
+                            if detail.type == "B5E5E107B687FEDAA" then -- Spirit of the Shadows
+                                if detail.remaining > tonumber(DeBuffWatcher_config["seconds"]) then
+                                    eternal_rogue = true
+                                end
+                            end
+                            if detail.type == "B0EF28442078DA6CD" then -- Spirit of Arms
+                                if detail.remaining > tonumber(DeBuffWatcher_config["seconds"]) then
+                                    eternal_warrior = true
+                                end
+                            end
+                            if detail.type == "B1CD787B134A73183" then -- Spirit of the Wilds
+                                if detail.remaining > tonumber(DeBuffWatcher_config["seconds"]) then
+                                    eternal_primalist = true
+                                end
+                            end
+                            if player.calling == "mage" or player.calling == "cleric" then
+                                if detail.type == "B76F46FAA030D4A53" or detail.type == "B599B39124D958B4F" then --  Visionary Brightsurge Vial = B76F46FAA030D4A53, Prophetic Brightsurge Vial = B599B39124D958B4F
                                     if detail.remaining > tonumber(DeBuffWatcher_config["seconds"]) then
-                                        eternal_mage = true
+                                        flask = true
+                                    end
+                                    if detail.remaining > 0 then
+                                        flask_duration = detail.remaining
                                     end
                                 end
-                                if detail.type == "B1A7C914C6A849564" then -- Spirit of Divinity
+                                if detail.type == "B40C3D8E1646C6DD1" then --  Gedlo Curry Pot (SP) = B40C3D8E2646C6DD1
                                     if detail.remaining > tonumber(DeBuffWatcher_config["seconds"]) then
-                                        eternal_cleric = true
+                                        food = true
+                                    end
+                                    if detail.remaining > 0 then
+                                        food_duration = detail.remaining
                                     end
                                 end
-                                if detail.type == "B5E5E107B687FEDAA" then -- Spirit of the Shadows
+                            else
+                                if detail.type == "B6A8C5F8010D4EFBB" or detail.type == "B03ABEAB575CC9A8E" then --  Visionary Powersurge Vial = B6A8C5F8110D4EFBB, Prophetic Powersurge Vial = B03ABEAB575CC9A8E
                                     if detail.remaining > tonumber(DeBuffWatcher_config["seconds"]) then
-                                        eternal_rogue = true
+                                        flask = true
+                                    end
+                                    if detail.remaining > 0 then
+                                        flask_duration = detail.remaining
                                     end
                                 end
-                                if detail.type == "B0EF28442078DA6CD" then -- Spirit of Arms
+                                if detail.type == "B40C3D8E33D686C51" then --  Gedlo Curry Pot (AP) = B40C3D8E43D686C51
                                     if detail.remaining > tonumber(DeBuffWatcher_config["seconds"]) then
-                                        eternal_warrior = true
+                                        food = true
                                     end
-                                end
-                                if detail.type == "B1CD787B134A73183" then -- Spirit of the Wilds
-                                    if detail.remaining > tonumber(DeBuffWatcher_config["seconds"]) then
-                                        eternal_primalist = true
-                                    end
-                                end
-                                if player.calling == "mage" or player.calling == "cleric" then
-                                    if detail.type == "B76F46FAA030D4A53" or detail.type == "B599B39124D958B4F" then --  Visionary Brightsurge Vial = B76F46FAA030D4A53, Prophetic Brightsurge Vial = B599B39124D958B4F
-                                        if detail.remaining > tonumber(DeBuffWatcher_config["seconds"]) then
-                                            flask = true
-                                        end
-                                        if detail.remaining > 0 then
-                                            flask_duration = detail.remaining
-                                        end
-                                    end
-                                    if detail.type == "B40C3D8E1646C6DD1" then --  Gedlo Curry Pot (SP) = B40C3D8E2646C6DD1
-                                        if detail.remaining > tonumber(DeBuffWatcher_config["seconds"]) then
-                                            food = true
-                                        end
-                                        if detail.remaining > 0 then
-                                            food_duration = detail.remaining
-                                        end
-                                    end
-                                else
-                                    if detail.type == "B6A8C5F8010D4EFBB" or detail.type == "B03ABEAB575CC9A8E" then --  Visionary Powersurge Vial = B6A8C5F8110D4EFBB, Prophetic Powersurge Vial = B03ABEAB575CC9A8E
-                                        if detail.remaining > tonumber(DeBuffWatcher_config["seconds"]) then
-                                            flask = true
-                                        end
-                                        if detail.remaining > 0 then
-                                            flask_duration = detail.remaining
-                                        end
-                                    end
-                                    if detail.type == "B40C3D8E33D686C51" then --  Gedlo Curry Pot (AP) = B40C3D8E43D686C51
-                                        if detail.remaining > tonumber(DeBuffWatcher_config["seconds"]) then
-                                            food = true
-                                        end
-                                        if detail.remaining > 0 then
-                                            food_duration = detail.remaining
-                                        end
+                                    if detail.remaining > 0 then
+                                        food_duration = detail.remaining
                                     end
                                 end
                             end
@@ -377,32 +375,34 @@ local function DeBuffWatcher()
                     end
                 end
                 local playersplit = ""
-                if weaponstone == false or flask == false  or food == false then
-                    for x in string.gmatch(player.name, '([^@]+)') do
-                        playersplit = x
-                        break
-                    end
+                for x in string.gmatch(player.name, '([^@]+)') do
+                    playersplit = x
+                    break
+                end
+                if (weaponstone == false or flask == false  or food == false) then
                     names = names .." " .. playersplit .. " - "
-                    if weaponstone == false then
-                        names = names .. "Weapon"
-                        if weaponstone_duration > 0 then
-                            weaponstone_duration = math.ceil(weaponstone_duration)
-                            mins = string.format("%02.f", math.floor(weaponstone_duration/60))
-                            secs = string.format("%02.f", math.floor(weaponstone_duration - mins *60))
-                            names = names .. "[" .. (mins .. ":" .. secs) .. "] "
-                        else
-                            names = names .. " "
+                    if player.role ~= "tank" then
+                        if weaponstone == false then
+                            names = names .. "Weapon"
+                            if weaponstone_duration > 0 then
+                                weaponstone_duration = math.ceil(weaponstone_duration)
+                                mins = string.format("%02.f", math.floor(weaponstone_duration/60))
+                                secs = string.format("%02.f", math.floor(weaponstone_duration - mins *60))
+                                names = names .. "[" .. (mins .. ":" .. secs) .. "] "
+                            else
+                                names = names .. " "
+                            end
                         end
-                    end
-                    if flask == false then
-                        names = names .. "Flask"
-                        if flask_duration > 0 then
-                            flask_duration = math.ceil(flask_duration)
-                            mins = string.format("%02.f", math.floor(flask_duration/60))
-                            secs = string.format("%02.f", math.floor(flask_duration - mins *60))
-                            names = names .. "[" .. (mins .. ":" .. secs) .. "] "
-                        else
-                            names = names .. " "
+                        if flask == false then
+                            names = names .. "Flask"
+                            if flask_duration > 0 then
+                                flask_duration = math.ceil(flask_duration)
+                                mins = string.format("%02.f", math.floor(flask_duration/60))
+                                secs = string.format("%02.f", math.floor(flask_duration - mins *60))
+                                names = names .. "[" .. (mins .. ":" .. secs) .. "] "
+                            else
+                                names = names .. " "
+                            end
                         end
                     end
                     if food == false then
@@ -416,26 +416,29 @@ local function DeBuffWatcher()
                             names = names .. " "
                         end
                     end
-                    if (mage == true and eternal_mage == false) or (cleric == true and eternal_cleric == false) or (rogue == true and eternal_rogue == false) or (warrior == true and eternal_warrior == false) or (primalist == true and eternal_primalist == false) then
-                        names = (names .. "Eternal: ")
-                        if rogue == true and eternal_rogue == false then
-                            names = (names .. "R ")
-                        end
-                        if primalist == true and eternal_primalist == false then
-                            names = (names .. "P ")
-                        end
-                        if mage == true and eternal_mage == false then
-                            names = (names .. "M ")
-                        end
-                        if cleric == true and eternal_cleric == false then
-                            names = (names .. "C ")
-                        end
-                        if warrior == true and eternal_warrior == false then
-                            names = (names .. "W ")
-                        end
-                    end
-                    names = names .. "\n"
                 end
+                if (mage == true and eternal_mage == false) or (cleric == true and eternal_cleric == false) or (rogue == true and eternal_rogue == false) or (warrior == true and eternal_warrior == false) or (primalist == true and eternal_primalist == false) then
+                    if names == "" then
+                        names = names .." " .. playersplit .. " - "
+                    end
+                    names = (names .. "Eternal: ")
+                    if rogue == true and eternal_rogue == false then
+                        names = (names .. "R ")
+                    end
+                    if primalist == true and eternal_primalist == false then
+                        names = (names .. "P ")
+                    end
+                    if mage == true and eternal_mage == false then
+                        names = (names .. "M ")
+                    end
+                    if cleric == true and eternal_cleric == false then
+                        names = (names .. "C ")
+                    end
+                    if warrior == true and eternal_warrior == false then
+                        names = (names .. "W ")
+                    end
+                end
+                names = names .. "\n"
             end
         end
         if playercount > 5 then
