@@ -101,39 +101,40 @@ local function check_target(target)
                     if detail.type == "B3789B303AAC4EED9" or detail.type == "BFBA778B2D2CEE7B1" or detail.type == "B1262F33677492EDD" then -- 5% Crit Chance (Archon: Earthen Barrage,Beasmaster: Call of Blood, Mystic: Precise Target)
                         Crit_Chance_Buff = true
                     end
---                    if detail.type == "B75CF79A3A7B75E32" or detail.type == "Inspiration of Battle" then -- 1% Crit Chance   (Bard: Motif of Bravery, Oracel: Inspiration of Battle)
---                        Crit_Chance_Buff_3 = true
---                    end
                     if detail.type == "B798CF51711D54B71" or detail.type == "B0E9C7498E1524C2B" then -- +5% Str/Dex/Int/Wis/End  (Oracel: Vitale Inspiration, Bard: Resonance)
                         Stat_Buff_2 = true
                     end
                     if detail.type == "BFB94CE4EDD7620E2" or detail.type == "B75CF79A3A7B75E32" or detail.type == "B44E09C3BAC84FAF8" or detail.type == "B40BA5956C492EA27" then --  Ap Sp Buff (Archon: Granite Salvo,  Bard: Motif of Bravery, Oracel: Inspiration of Battle, Mystic: Aerial Boon)
                         AP_SP_Buff_2 = true
                     end
---                    if detail.type == "B40BA5956C492EA27" or detail.type == "B44E09C3BAC84FAF8" then -- Ap Sp Str Dex Int Wis (Mystic: Aerial Boon, Oracel: Inspiration of Battle overwrite Ariel Boom)
---                        Stat_Buff_Mystic = true
---                    end
-                    if detail.type == "B51B584CC19F8B2C4" or detail.type == "B72AED2881E9C8CD7" then -- Increases Strength, Dexterity, Intelligence, and Wisdom (Archon: Vitality of Stone, Beastmaster: Bond of Power)
+
+                    if detail.type == "B51B584CC19F8B2C4" or detail.type == "B51B584CB7C4213D2" or detail.type == "B72AED2881E9C8CD7" then -- Increases Strength, Dexterity, Intelligence, and Wisdom (Archon: Vitality of Stone, Beastmaster: Bond of Power)
                         Stat_Buff_1 = true
                     end
                     if detail.type == "B5F75E0061F5806B1" or detail.type == "B3007E29CF12D03AC" then -- Str Dex Int Wis  (Bard: Fanfare of Power, Oracel: Boon of Resurgence)
                         Stat_Buff_3 = true
                     end
-                    if detail.type == "B62F881BBF0FCCD2C" or detail.type == "B4F0EF3B2483B48F7" then -- Endurance (Bard: Fanfare of Vigor, Orcael: Boon of Vitality)
-                        Endurance_Buff_1 = true
-                    end
-                    if detail.type == "B023CD8D851AD339D" then -- Endurance (Archon: Shared Vigor)
-                        Endurance_Buff_2 = true
-                    end
-                    if detail.type == "B65677DAB403EB0C9" or detail.type == "B2B02AF47B53C21FC" or detail.type == "BFBB53A78D37A5FC9" or detail.type == "B652E7F8D09C92616" or detail.type == "B6DDCD00446FC9FFA" then -- Armor Resi (Archon: Arcane Aegis, Bard; Anthem of Glory, Beastmaster: Bond of Shelter, Oracel: Defensive Favor, Mystic: living armor)
-                        Armor_Resistance_Buff = true
-                    end
-                    if detail.type == "B60F47F310B4793F6" or detail.type == "BFB1E91C33E5F87CC" or detail.type == "B13FEC95AAB509ADD" then -- Damage Reduce (Bard: Motif of Tenacity, Bm: Call of Stone, Oracel: Inspiration of the Keep)
-                        Reduced_Damage_Taken_1 = true
-                    end
-                    if detail.type == "B0FA41E09E7A89F58" or detail.type == "BFC309907EA2F0FBB" then -- Increase Healing (Bard: Motif of Regeneration, Oracel: Inspiration of Survival)
-                        Healing_Received_Buff_1 = true
-                    end
+--                    if detail.type == "B75CF79A3A7B75E32" or detail.type == "Inspiration of Battle" then -- 1% Crit Chance   (Bard: Motif of Bravery, Oracel: Inspiration of Battle)
+--                        Crit_Chance_Buff_3 = true
+--                    end
+--                    if detail.type == "B40BA5956C492EA27" or detail.type == "B44E09C3BAC84FAF8" then -- Ap Sp Str Dex Int Wis (Mystic: Aerial Boon, Oracel: Inspiration of Battle overwrite Ariel Boom)
+--                        Stat_Buff_Mystic = true
+--                    end
+--                    if detail.type == "B62F881BBF0FCCD2C" or detail.type == "B4F0EF3B2483B48F7" then -- Endurance (Bard: Fanfare of Vigor, Orcael: Boon of Vitality)
+--                        Endurance_Buff_1 = true
+--                    end
+--                    if detail.type == "B023CD8D9D3BDF841" then -- Endurance (Archon: Shared Vigor)
+--                        Endurance_Buff_2 = true
+--                    end
+--                    if detail.type == "B65677DAB403EB0C9" or detail.type == "B2B02AF47B53C21FC" or detail.type == "BFBB53A78D37A5FC9" or detail.type == "B652E7F8D09C92616" or detail.type == "B6DDCD00446FC9FFA" then -- Armor Resi (Archon: Arcane Aegis, Bard; Anthem of Glory, Beastmaster: Bond of Shelter, Oracel: Defensive Favor, Mystic: living armor)
+--                        Armor_Resistance_Buff = true
+--                    end
+--                    if detail.type == "B60F47F310B4793F6" or detail.type == "BFB1E91C33E5F87CC" or detail.type == "B13FEC95AAB509ADD" then -- Damage Reduce (Bard: Motif of Tenacity, Bm: Call of Stone, Oracel: Inspiration of the Keep)
+--                        Reduced_Damage_Taken_1 = true
+--                    end
+--                    if detail.type == "B0FA41E09E7A89F58" or detail.type == "BFC309907EA2F0FBB" then -- Increase Healing (Bard: Motif of Regeneration, Oracel: Inspiration of Survival)
+--                        Healing_Received_Buff_1 = true
+--                    end
                 end
             end
         end
@@ -148,53 +149,53 @@ local function check_target(target)
                 missing_debuffs = missing_debuffs .. " 5% Magical (Cleric Vulcanist) \n"
             end
         elseif target == "player" then
+            if Damage_Buff_1 == false then
+                missing_debuffs = missing_debuffs .. " 5 % Damage (Archon Bm Mystic) \n"
+            end
             if mystic == true then
---                if Damage_Buff_Mystic_2 == false then
---                    missing_debuffs = missing_debuffs .. " 12 % Damage (Mystic) \n"
---                end
                 if Damage_Buff_Mystic_1 == false then
                     missing_debuffs = missing_debuffs .. " 5 % Damage (Mystic) \n"
                 end
             end
-            if Damage_Buff_1 == false then
-                missing_debuffs = missing_debuffs .. " 5 % Damage (Archon Bm Mystic) \n"
-            end
             if Crit_Chance_Buff == false then
                 missing_debuffs = missing_debuffs .. " 5% Crit Chance (Archon Bm Mystic) \n"
-            end
-            if Reduced_Damage_Taken_1 == false then
-                missing_debuffs = missing_debuffs .. " 5 % Damage Reduce (Bard Bm Oracel) \n"
-            end
-            if Healing_Received_Buff_1 == false then
-                missing_debuffs = missing_debuffs .. " 5 % Increase Healing (Bard Oracel) \n"
             end
             if Stat_Buff_2 == false then
                 missing_debuffs = missing_debuffs .. " 5% Mainstats (Bard Oracel) \n"
             end
-            if Crit_Chance_Buff_3 == false then
-                missing_debuffs = missing_debuffs .. " 1% Crit Chance (Bard Oracel) \n"
-            end
             if AP_SP_Buff_2 == false then
                 missing_debuffs = missing_debuffs .. " Ap Sp (Archon Bard Oracel Mytic) \n"
             end
---            if Stat_Buff_Mystic == false then
---                missing_debuffs = missing_debuffs .. " Ap Sp Str Dex Int Wis (Mystic) \n"
---            end
             if Stat_Buff_1 == false then
                 missing_debuffs = missing_debuffs .. " Str Dex Int Wis (Archon Bm) \n"
             end
             if Stat_Buff_3 == false then
                 missing_debuffs = missing_debuffs .. " Str Dex Int Wis (Bard Oracel) \n"
             end
-            if Endurance_Buff_1 == false then
-                missing_debuffs = missing_debuffs .. " Endurance (Bard Oracel) \n"
-            end
-            if Endurance_Buff_2 == false then
-                missing_debuffs = missing_debuffs .. " Endurance (Archon) \n"
-            end
-            if Armor_Resistance_Buff == false then
-                missing_debuffs = missing_debuffs .. " Armor Resi (Support) \n"
-            end
+--            if Crit_Chance_Buff_3 == false then
+--                missing_debuffs = missing_debuffs .. " 1% Crit Chance (Bard Oracel) \n"
+--            end
+--            if Reduced_Damage_Taken_1 == false then
+--                missing_debuffs = missing_debuffs .. " 5 % Damage Reduce (Bard Bm Oracel) \n"
+--            end
+--            if Healing_Received_Buff_1 == false then
+--                missing_debuffs = missing_debuffs .. " 5 % Increase Healing (Bard Oracel) \n"
+--            end
+--            if Stat_Buff_Mystic == false then
+--                missing_debuffs = missing_debuffs .. " Ap Sp Str Dex Int Wis (Mystic) \n"
+--            end
+--            if Endurance_Buff_1 == false then
+--                missing_debuffs = missing_debuffs .. " Endurance (Bard Oracel) \n"
+--            end
+--            if Endurance_Buff_2 == false then
+--                missing_debuffs = missing_debuffs .. " Endurance (Archon) \n"
+--            end
+--            if Armor_Resistance_Buff == false then
+--                missing_debuffs = missing_debuffs .. " Armor Resi (Support) \n"
+--            end
+--            if Damage_Buff_Mystic_2 == false then
+--                missing_debuffs = missing_debuffs .. " 12 % Damage (Mystic) \n"
+--            end
         end
     end
     return missing_debuffs
