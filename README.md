@@ -1,4 +1,4 @@
-# DeBuffWatcher 0.8
+# DeBuffWatcher 0.9
 Monitors if all important buffs and debuffs in a raid for the MMORPG Rift. The missing debuffs and raidbuffs are only displayed if you are in a group of at least 6 people (raid) and you are in combat. The addon also checks the buffs (Weaponstone, Flask, Food, Eternal Buffs) of all players at every rdy check.
 
 Download latest Version: https://github.com/Bamux/DeBuffWatcher/archive/master.zip
