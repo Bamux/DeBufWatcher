@@ -1,7 +1,7 @@
 local in_combat = false
 local countdown = 0
 local timeStamp = 0
-local raid = true
+local raid = false
 
 
 function create_ui()
