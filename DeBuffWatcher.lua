@@ -379,8 +379,6 @@ local function DeBuffWatcher()
                     playersplit = x
                     break
                 end
-                -- flask = true
-                -- eternal_mage = true
                 if (weaponstone == false or flask == false  or food == false) then
                     names = names .." " .. playersplit .. " - "
                     if player.role ~= "tank" then
