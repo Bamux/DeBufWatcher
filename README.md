@@ -3,7 +3,7 @@ Monitors if all important buffs and debuffs in a raid for the MMORPG Rift. The m
 
 Download latest Version: https://github.com/Bamux/DeBuffWatcher/archive/master.zip
 
-![addon](https://cdn.discordapp.com/attachments/374932500910309379/493521815566549007/unknown.png)
+![addon](https://cdn.discordapp.com/attachments/374932500910309379/493521815566549007/unknown.png)![addon](https://cdn.discordapp.com/attachments/374932500910309379/494266509120503808/unknown.png)
 
 Commands:
 - /dbw check - start raid buff check
