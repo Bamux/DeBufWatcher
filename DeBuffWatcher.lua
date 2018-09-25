@@ -1,7 +1,7 @@
 local in_combat = false
 local countdown = 0
 local timeStamp = 0
-local raid = false
+local raid = true
 
 
 function create_ui()
@@ -108,7 +108,7 @@ local function check_target(target)
                         AP_SP_Buff_2 = true
                     end
 
-                    if detail.type == "B51B584CC19F8B2C4" or detail.type == "B51B584CB7C4213D2" or detail.type == "B72AED2881E9C8CD7" then -- Increases Strength, Dexterity, Intelligence, and Wisdom (Archon: Vitality of Stone, Beastmaster: Bond of Power)
+                    if detail.type == "B51B584CB7C4213D2" or detail.type == "B72AED2881E9C8CD7" then -- Increases Strength, Dexterity, Intelligence, and Wisdom (Archon: Vitality of Stone, Beastmaster: Bond of Power)
                         Stat_Buff_1 = true
                     end
                     if detail.type == "B5F75E0061F5806B1" or detail.type == "B3007E29CF12D03AC" then -- Str Dex Int Wis  (Bard: Fanfare of Power, Oracel: Boon of Resurgence)
@@ -379,6 +379,8 @@ local function DeBuffWatcher()
                     playersplit = x
                     break
                 end
+                -- flask = true
+                -- eternal_mage = true
                 if (weaponstone == false or flask == false  or food == false) then
                     names = names .." " .. playersplit .. " - "
                     if player.role ~= "tank" then
@@ -438,7 +440,9 @@ local function DeBuffWatcher()
                         names = (names .. "W ")
                     end
                 end
-                names = names .. "\n"
+                if names ~= "" then
+                    names = names .. "\n"
+                end
             end
         end
         if playercount > 5 then
