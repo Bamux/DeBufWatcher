@@ -2,7 +2,7 @@ local in_combat = false
 local countdown = 0
 local timeStamp = 0
 local raid = false
-
+local mystic = false
 
 function create_ui()
     if not DeBuffWatcher_config then
@@ -56,7 +56,6 @@ end
 
 
 local function check_target(target)
-    local mystic = true
     local Increased_Physical_Damage_Taken = false
     local Increased_Nonphysical_Damage_Taken_1 = false
     local Increased_Nonphysical_Damage_Taken_2 = false
@@ -82,6 +81,9 @@ local function check_target(target)
             local detail = Inspect.Buff.Detail(target, buffid)
             if detail and detail.type then
                 if target == "player.target" then
+                    if detail.type == "BFDFF85B646DAA2EA" then
+                        mystic = true
+                    end
                     if detail.type == "B5085DB9C5B1F666A" or detail.type == "B6586D0E97741AF9E" or detail.type == "B6BA1ADFD5A93F825" or detail.type == "BFA139B4FA150A7DA" or detail.type == "BFDFF85B646DAA2EA"  then -- Increases Physical damage taken by 5% (Archon: Ashen Defense, Cleric: Curse of Frailty, Bard: Coda of Cowardice, Beastmaster: Twin Cuts, Mystic: Hurricane Breach)
                         Increased_Physical_Damage_Taken = true
                     end
@@ -92,10 +94,14 @@ local function check_target(target)
                         Increased_Nonphysical_Damage_Taken_2 = true
                     end
                 elseif target == "player" then
+                    if detail.type == "B1262F33677492EDD" or detail.type == "B40BA5956C492EA27" then
+                        mystic = true
+                    end
                     if detail.type == "B40B9609C0DF37AF1" or detail.type == "BFD4F3DEDCF4401E7" or detail.type == "B02F72F8374F5ACB7" then -- Increases damage done by 5% (Archon: Volcanic Bomb, Beastmaster: Call of Savagery, Mystic: Call of Savagery)
                         Damage_Buff_1 = true
                     end
                     if detail.type == "B54E7963BB7F26353" then -- Increases damage done by 5% (Mystic: Primal Savagery)
+                        mystic = true
                         Damage_Buff_Mystic_1 = true
                     end
                     if detail.type == "B3789B303AAC4EED9" or detail.type == "BFBA778B2D2CEE7B1" or detail.type == "B1262F33677492EDD" then -- 5% Crit Chance (Archon: Earthen Barrage,Beasmaster: Call of Blood, Mystic: Precise Target)
