@@ -3,6 +3,8 @@ local countdown = 0
 local timeStamp = 0
 local raid = false
 local mystic = false
+local cleric = false
+local primalist = false
 
 function create_ui()
     if not DeBuffWatcher_config then
@@ -151,8 +153,10 @@ local function check_target(target)
             if Increased_Nonphysical_Damage_Taken_1 == false then
                 missing_debuffs = missing_debuffs .. " 7% Magical (Support) \n"
             end
-            if Increased_Nonphysical_Damage_Taken_2 == false then
-                missing_debuffs = missing_debuffs .. " 5% Magical (Cleric Vulcanist) \n"
+            if cleric == true or primalist == true then
+                if Increased_Nonphysical_Damage_Taken_2 == false then
+                    missing_debuffs = missing_debuffs .. " 5% Magical (Cleric Vulcanist) \n"
+                end
             end
         elseif target == "player" then
             if Damage_Buff_1 == false then
@@ -232,6 +236,8 @@ end
 
 local function DeBuffWatcher()
     if in_combat == false then
+        cleric = false
+        primalist = false
         local eternal_mage = false
         local eternal_cleric = false
         local eternal_rogue = false
@@ -243,10 +249,8 @@ local function DeBuffWatcher()
         local eternal_warrior_duration = 0
         local eternal_primalist_duration = 0
         local mage = false
-        local cleric = false
         local rogue = false
         local warrior = false
-        local primalist = false
         local groupmember = ""
         local names = ""
         local buff_count = 0
@@ -385,30 +389,32 @@ local function DeBuffWatcher()
                     playersplit = x
                     break
                 end
+                if player.role == "tank" then
+                    weaponstone = true
+                    flask = true
+                end
                 if (weaponstone == false or flask == false  or food == false) then
                     names = names .." " .. playersplit .. " - "
-                    if player.role ~= "tank" then
-                        if weaponstone == false then
-                            names = names .. "Weapon"
-                            if weaponstone_duration > 0 then
-                                weaponstone_duration = math.ceil(weaponstone_duration)
-                                mins = string.format("%02.f", math.floor(weaponstone_duration/60))
-                                secs = string.format("%02.f", math.floor(weaponstone_duration - mins *60))
-                                names = names .. "[" .. (mins .. ":" .. secs) .. "] "
-                            else
-                                names = names .. " "
-                            end
+                    if weaponstone == false then
+                        names = names .. "Weapon"
+                        if weaponstone_duration > 0 then
+                            weaponstone_duration = math.ceil(weaponstone_duration)
+                            mins = string.format("%02.f", math.floor(weaponstone_duration/60))
+                            secs = string.format("%02.f", math.floor(weaponstone_duration - mins *60))
+                            names = names .. "[" .. (mins .. ":" .. secs) .. "] "
+                        else
+                            names = names .. " "
                         end
-                        if flask == false then
-                            names = names .. "Flask"
-                            if flask_duration > 0 then
-                                flask_duration = math.ceil(flask_duration)
-                                mins = string.format("%02.f", math.floor(flask_duration/60))
-                                secs = string.format("%02.f", math.floor(flask_duration - mins *60))
-                                names = names .. "[" .. (mins .. ":" .. secs) .. "] "
-                            else
-                                names = names .. " "
-                            end
+                    end
+                    if flask == false then
+                        names = names .. "Flask"
+                        if flask_duration > 0 then
+                            flask_duration = math.ceil(flask_duration)
+                            mins = string.format("%02.f", math.floor(flask_duration/60))
+                            secs = string.format("%02.f", math.floor(flask_duration - mins *60))
+                            names = names .. "[" .. (mins .. ":" .. secs) .. "] "
+                        else
+                            names = names .. " "
                         end
                     end
                     if food == false then
