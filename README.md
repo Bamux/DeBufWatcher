@@ -12,3 +12,16 @@ Commands:
 - /dbw background=X - to change background transparency (X=0-100)
 - /dbw seconds=X - Remaining time of the buffs until a warning occurs in seconds(X = 0 - 600)
 - /dbw reset - restore the default settings
+
+
+
+# How do I install an AddOn?
+1. Extract the files to a folder on your desktop.
+2. Run Rift.
+3. Click on the 'addons' button on the character select screen.
+4. Click on the 'open addon directory' button on the addons list screen. This will open a Windows folder window.
+The path should be:
+< game directory>\interface\addons
+5. Copy the addon folder from your desktop into the newly opened folder window.
+6. Click 'refresh' once the new addon is in the addon folder.
+7. Make sure the addon is ticked and you should be all set.
