@@ -6,7 +6,7 @@ Description = "This addon check your raid buffs at each ready check.\n\n/dbw che
  
 Author = "Bamu"
  
-Version = "0.1"
+Version = "1.11"
  
 Email = "Bamu@Brutwacht"
  
