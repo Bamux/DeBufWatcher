@@ -6,7 +6,7 @@ Description = "This addon check your raid buffs and debuffs.\n\n/dbw check - sta
  
 Author = "Bamu"
  
-Version = "1.11"
+Version = "1.12"
  
 Email = "Bamu@Brutwacht"
  

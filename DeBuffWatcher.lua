@@ -86,63 +86,73 @@ local function check_target(target)
                     if detail.type == "BFDFF85B646DAA2EA" then
                         mystic = true
                     end
-                    if detail.type == "B5085DB9C5B1F666A" or detail.type == "B6586D0E97741AF9E" or detail.type == "B6BA1ADFD5A93F825" or detail.type == "BFA139B4FA150A7DA" or detail.type == "BFDFF85B646DAA2EA"  then -- Increases Physical damage taken by 5% (Archon: Ashen Defense, Cleric: Curse of Frailty, Bard: Coda of Cowardice, Beastmaster: Twin Cuts, Mystic: Hurricane Breach)
-                        Increased_Physical_Damage_Taken = true
+                    if detail.type == "B5085DB9C5B1F666A" -- Archon: Ashen Defense
+                            or detail.type == "B6586D0E97741AF9E" -- Cleric: Curse of Frailty
+                            or detail.type == "BFECB7D5207EC913F" -- Cleric: Seeping of Frailty
+                            or detail.type == "B6BA1ADFD5A93F825" -- Bard: Coda of Cowardice
+                            or detail.type == "BFA139B4FA150A7DA" -- Beastmaster: Twin Cuts
+                            or detail.type == "BFDFF85B646DAA2EA" -- Mystic: Hurricane Breach
+                    then
+                        Increased_Physical_Damage_Taken = true -- Increases Physical damage taken by 5%
                     end
-                    if detail.type == "B7E3F5A42867CB671" or detail.type == "B6E2FAAA28AC69397" or detail.type == "B28FB2E2C8B594765" or detail.type == "BFA139B4FA150A7DA" or detail.type == "BFDFF85B646DAA2EA" then -- Increases non-Physical damage taken by 7%. (Archon: Crumbling Resistance, Oracel: Curse of Consumption, Bard: Coda of Distress, Beastmaster: Twin Cuts, Mystic: Hurricane Breach)
-                        Increased_Nonphysical_Damage_Taken_1 = true
+                    if detail.type == "B7E3F5A42867CB671" -- Archon: Crumbling Resistance
+                            or detail.type == "B6E2FAAA28AC69397" -- Oracel: Curse of Consumption
+                            or detail.type == "B4EB172833919BDE4" -- Oracel: Seeping of Consumption
+                            or detail.type == "B28FB2E2C8B594765" -- Bard: Coda of Distress
+                            or detail.type == "BFA139B4FA150A7DA" -- Beastmaster: Twin Cuts
+                            or detail.type == "BFDFF85B646DAA2EA" -- Mystic: Hurricane Breach
+                    then
+                        Increased_Nonphysical_Damage_Taken_1 = true -- Increases non-Physical damage taken by 7%
                     end
-                    if detail.type == "B491E02360D5FB16B" or detail.type == "B58C8F3A95CAE1CFA" or detail.type == "B1C94A46AE6BD5813" then -- Increases non-Physical damage taken by 5%. (Defiler: Tenebrious Distortion, Inquisitor: Clinging Spirit, Vulcanist: Slagged)
-                        Increased_Nonphysical_Damage_Taken_2 = true
+                    if detail.type == "B491E02360D5FB16B" -- Defiler: Tenebrious Distortion
+                            or detail.type == "B58C8F3A95CAE1CFA" -- Inquisitor: Clinging Spirit
+                            or detail.type == "B1C94A46AE6BD5813" -- Vulcanist: Slagged
+                    then
+                        Increased_Nonphysical_Damage_Taken_2 = true -- Increases non-Physical damage taken by 5%
                     end
                 elseif target == "player" then
                     if detail.type == "B1262F33677492EDD" or detail.type == "B40BA5956C492EA27" then
                         mystic = true
                     end
-                    if detail.type == "B40B9609C0DF37AF1" or detail.type == "BFD4F3DEDCF4401E7" or detail.type == "B02F72F8374F5ACB7" then -- Increases damage done by 5% (Archon: Volcanic Bomb, Beastmaster: Call of Savagery, Mystic: Call of Savagery)
-                        Damage_Buff_1 = true
+                    if detail.type == "B40B9609C0DF37AF1" -- Archon: Volcanic Bomb
+                            or detail.type == "BFD4F3DEDCF4401E7" -- Beastmaster: Call of Savagery
+                            or detail.type == "B02F72F8374F5ACB7" -- Mystic: Call of Savagery
+                    then
+                        Damage_Buff_1 = true -- Increases damage done by 5%
                     end
                     if detail.type == "B54E7963BB7F26353" then -- Increases damage done by 5% (Mystic: Primal Savagery)
                         mystic = true
                         Damage_Buff_Mystic_1 = true
                     end
-                    if detail.type == "B3789B303AAC4EED9" or detail.type == "BFBA778B2D2CEE7B1" or detail.type == "B1262F33677492EDD" then -- 5% Crit Chance (Archon: Earthen Barrage,Beasmaster: Call of Blood, Mystic: Precise Target)
+                    if detail.type == "B3789B303AAC4EED9"
+                            or detail.type == "BFBA778B2D2CEE7B1"
+                            or detail.type == "B1262F33677492EDD"
+                    then -- 5% Crit Chance (Archon: Earthen Barrage,Beasmaster: Call of Blood, Mystic: Precise Target)
                         Crit_Chance_Buff = true
                     end
-                    if detail.type == "B798CF51711D54B71" or detail.type == "B0E9C7498E1524C2B" then -- +5% Str/Dex/Int/Wis/End  (Oracel: Vitale Inspiration, Bard: Resonance)
+                    if detail.type == "B798CF51711D54B71"
+                            or detail.type == "B0E9C7498E1524C2B"
+                    then -- +5% Str/Dex/Int/Wis/End  (Oracel: Vitale Inspiration, Bard: Resonance)
                         Stat_Buff_2 = true
                     end
-                    if detail.type == "BFB94CE4EDD7620E2" or detail.type == "B75CF79A3A7B75E32" or detail.type == "B44E09C3BAC84FAF8" or detail.type == "B40BA5956C492EA27" then --  Ap Sp Buff (Archon: Granite Salvo,  Bard: Motif of Bravery, Oracel: Inspiration of Battle, Mystic: Aerial Boon)
-                        AP_SP_Buff_2 = true
+                    if detail.type == "BFB94CE4EDD7620E2" -- Archon: Granite Salvo
+                            or detail.type == "B75CF79A3A7B75E32" --  Bard: Motif of Bravery
+                            or detail.type == "B44E09C3BAC84FAF8" --  Oracel: Inspiration of Battle
+                            or detail.type == "B40BA5956C492EA27" --  Mystic: Aerial Boon
+                    then
+                        AP_SP_Buff_2 = true --  Ap Sp Buff
                     end
 
-                    if detail.type == "B51B584CB7C4213D2" or detail.type == "B72AED2881E9C8CD7" then -- Increases Strength, Dexterity, Intelligence, and Wisdom (Archon: Vitality of Stone, Beastmaster: Bond of Power)
-                        Stat_Buff_1 = true
+                    if detail.type == "B51B584CB7C4213D2" -- Archon: Vitality of Stone
+                            or detail.type == "B72AED2881E9C8CD7" -- Beastmaster: Bond of Power
+                    then
+                        Stat_Buff_1 = true -- Increases Strength, Dexterity, Intelligence, and Wisdom
                     end
-                    if detail.type == "B5F75E0061F5806B1" or detail.type == "B3007E29CF12D03AC" then -- Str Dex Int Wis  (Bard: Fanfare of Power, Oracel: Boon of Resurgence)
+                    if detail.type == "B5F75E0061F5806B1"
+                            or detail.type == "B3007E29CF12D03AC"
+                    then -- Str Dex Int Wis  (Bard: Fanfare of Power, Oracel: Boon of Resurgence)
                         Stat_Buff_3 = true
                     end
---                    if detail.type == "B75CF79A3A7B75E32" or detail.type == "Inspiration of Battle" then -- 1% Crit Chance   (Bard: Motif of Bravery, Oracel: Inspiration of Battle)
---                        Crit_Chance_Buff_3 = true
---                    end
---                    if detail.type == "B40BA5956C492EA27" or detail.type == "B44E09C3BAC84FAF8" then -- Ap Sp Str Dex Int Wis (Mystic: Aerial Boon, Oracel: Inspiration of Battle overwrite Ariel Boom)
---                        Stat_Buff_Mystic = true
---                    end
---                    if detail.type == "B62F881BBF0FCCD2C" or detail.type == "B4F0EF3B2483B48F7" then -- Endurance (Bard: Fanfare of Vigor, Orcael: Boon of Vitality)
---                        Endurance_Buff_1 = true
---                    end
---                    if detail.type == "B023CD8D9D3BDF841" then -- Endurance (Archon: Shared Vigor)
---                        Endurance_Buff_2 = true
---                    end
---                    if detail.type == "B65677DAB403EB0C9" or detail.type == "B2B02AF47B53C21FC" or detail.type == "BFBB53A78D37A5FC9" or detail.type == "B652E7F8D09C92616" or detail.type == "B6DDCD00446FC9FFA" then -- Armor Resi (Archon: Arcane Aegis, Bard; Anthem of Glory, Beastmaster: Bond of Shelter, Oracel: Defensive Favor, Mystic: living armor)
---                        Armor_Resistance_Buff = true
---                    end
---                    if detail.type == "B60F47F310B4793F6" or detail.type == "BFB1E91C33E5F87CC" or detail.type == "B13FEC95AAB509ADD" then -- Damage Reduce (Bard: Motif of Tenacity, Bm: Call of Stone, Oracel: Inspiration of the Keep)
---                        Reduced_Damage_Taken_1 = true
---                    end
---                    if detail.type == "B0FA41E09E7A89F58" or detail.type == "BFC309907EA2F0FBB" then -- Increase Healing (Bard: Motif of Regeneration, Oracel: Inspiration of Survival)
---                        Healing_Received_Buff_1 = true
---                    end
                 end
             end
         end
@@ -182,30 +192,6 @@ local function check_target(target)
             if Stat_Buff_3 == false then
                 missing_debuffs = missing_debuffs .. " Str Dex Int Wis (Bard Oracel) \n"
             end
---            if Crit_Chance_Buff_3 == false then
---                missing_debuffs = missing_debuffs .. " 1% Crit Chance (Bard Oracel) \n"
---            end
---            if Reduced_Damage_Taken_1 == false then
---                missing_debuffs = missing_debuffs .. " 5 % Damage Reduce (Bard Bm Oracel) \n"
---            end
---            if Healing_Received_Buff_1 == false then
---                missing_debuffs = missing_debuffs .. " 5 % Increase Healing (Bard Oracel) \n"
---            end
---            if Stat_Buff_Mystic == false then
---                missing_debuffs = missing_debuffs .. " Ap Sp Str Dex Int Wis (Mystic) \n"
---            end
---            if Endurance_Buff_1 == false then
---                missing_debuffs = missing_debuffs .. " Endurance (Bard Oracel) \n"
---            end
---            if Endurance_Buff_2 == false then
---                missing_debuffs = missing_debuffs .. " Endurance (Archon) \n"
---            end
---            if Armor_Resistance_Buff == false then
---                missing_debuffs = missing_debuffs .. " Armor Resi (Support) \n"
---            end
---            if Damage_Buff_Mystic_2 == false then
---                missing_debuffs = missing_debuffs .. " 12 % Damage (Mystic) \n"
---            end
         end
     end
     return missing_debuffs
@@ -214,8 +200,15 @@ end
 
 local function in_combat_DeBuffWatcher()
     local textbox = ""
-    local missing_debuffs = check_target("player.target")
-    local missing_buffs = check_target("player")
+    local missing_debuffs = ""
+    local missing_buffs = ""
+    local unit_detail = Inspect.Unit.Detail("player.target")
+    if unit_detail then
+        if unit_detail.player == nil then
+            missing_debuffs = check_target("player.target")
+        end
+    end
+    missing_buffs = check_target("player")
     if missing_debuffs ~= "" then
         textbox = " Missing Debuffs: \n" .. missing_debuffs
     end
@@ -257,7 +250,7 @@ local function DeBuffWatcher()
         local mins = 0
         local secs = 0
         local group = false
-        local playercount = 0
+        local playercount = 6
         for i=1, 21 do
             local flask = false
             local weaponstone = false
@@ -310,7 +303,9 @@ local function DeBuffWatcher()
                                     end
                                 end
                             else
-                                if detail.rune == "rFA65F5184E42C822" or detail.rune == "r70B0A3843EC153B8" then -- Atramentium Whetstone = rFA65F5184E42C822, Atramentium Oilstone = r70B0A3843EC153B8
+                                if detail.rune == "rFA65F5184E42C822" -- Atramentium Whetstone = rFA65F5184E42C822
+                                        or detail.rune == "r70B0A3843EC153B8" -- Atramentium Oilstone = r70B0A3843EC153B8
+                                then
                                     if detail.remaining > tonumber(DeBuffWatcher_config["seconds"]) then
                                         weaponstone = true
                                     end
@@ -347,7 +342,9 @@ local function DeBuffWatcher()
                                 end
                             end
                             if player.calling == "mage" or player.calling == "cleric" then
-                                if detail.type == "B76F46FAA030D4A53" or detail.type == "B599B39124D958B4F" then --  Visionary Brightsurge Vial = B76F46FAA030D4A53, Prophetic Brightsurge Vial = B599B39124D958B4F
+                                if detail.type == "B76F46FAA030D4A53" -- Visionary Brightsurge Vial = B76F46FAA030D4A53
+                                        or detail.type == "B599B39124D958B4F" -- Prophetic Brightsurge Vial = B599B39124D958B4F
+                                then
                                     if detail.remaining > tonumber(DeBuffWatcher_config["seconds"]) then
                                         flask = true
                                     end
@@ -364,7 +361,9 @@ local function DeBuffWatcher()
                                     end
                                 end
                             else
-                                if detail.type == "B6A8C5F8010D4EFBB" or detail.type == "B03ABEAB575CC9A8E" then --  Visionary Powersurge Vial = B6A8C5F8110D4EFBB, Prophetic Powersurge Vial = B03ABEAB575CC9A8E
+                                if detail.type == "B6A8C5F8010D4EFBB" -- Visionary Powersurge Vial = B6A8C5F8110D4EFBB
+                                        or detail.type == "B03ABEAB575CC9A8E" -- Prophetic Powersurge Vial = B03ABEAB575CC9A8E
+                                then
                                     if detail.remaining > tonumber(DeBuffWatcher_config["seconds"]) then
                                         flask = true
                                     end
@@ -429,7 +428,11 @@ local function DeBuffWatcher()
                         end
                     end
                 end
-                if (mage == true and eternal_mage == false) or (cleric == true and eternal_cleric == false) or (rogue == true and eternal_rogue == false) or (warrior == true and eternal_warrior == false) or (primalist == true and eternal_primalist == false) then
+                if (mage == true and eternal_mage == false)
+                        or (cleric == true and eternal_cleric == false)
+                        or (rogue == true and eternal_rogue == false)
+                        or (warrior == true and eternal_warrior == false)
+                        or (primalist == true and eternal_primalist == false) then
                     if names == "" then
                         names = names .." " .. playersplit .. " - "
                     end
