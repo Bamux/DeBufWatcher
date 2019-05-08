@@ -96,8 +96,8 @@ local function check_target(target)
                         Increased_Physical_Damage_Taken = true -- Increases Physical damage taken by 5%
                     end
                     if detail.type == "B7E3F5A42867CB671" -- Archon: Crumbling Resistance
-                            or detail.type == "B6E2FAAA28AC69397" -- Oracel: Curse of Consumption
-                            or detail.type == "B4EB172833919BDE4" -- Oracel: Seeping of Consumption
+                            or detail.type == "B6E2FAAA28AC69397" -- Oracle: Curse of Consumption
+                            or detail.type == "B4EB172833919BDE4" -- Oracle: Seeping of Consumption
                             or detail.type == "B28FB2E2C8B594765" -- Bard: Coda of Distress
                             or detail.type == "BFA139B4FA150A7DA" -- Beastmaster: Twin Cuts
                             or detail.type == "BFDFF85B646DAA2EA" -- Mystic: Hurricane Breach
@@ -132,12 +132,12 @@ local function check_target(target)
                     end
                     if detail.type == "B798CF51711D54B71"
                             or detail.type == "B0E9C7498E1524C2B"
-                    then -- +5% Str/Dex/Int/Wis/End  (Oracel: Vitale Inspiration, Bard: Resonance)
+                    then -- +5% Str/Dex/Int/Wis/End  (Oracle: Vitale Inspiration, Bard: Resonance)
                         Stat_Buff_2 = true
                     end
                     if detail.type == "BFB94CE4EDD7620E2" -- Archon: Granite Salvo
                             or detail.type == "B75CF79A3A7B75E32" --  Bard: Motif of Bravery
-                            or detail.type == "B44E09C3BAC84FAF8" --  Oracel: Inspiration of Battle
+                            or detail.type == "B44E09C3BAC84FAF8" --  Oracle: Inspiration of Battle
                             or detail.type == "B40BA5956C492EA27" --  Mystic: Aerial Boon
                     then
                         AP_SP_Buff_2 = true --  Ap Sp Buff
@@ -150,7 +150,7 @@ local function check_target(target)
                     end
                     if detail.type == "B5F75E0061F5806B1"
                             or detail.type == "B3007E29CF12D03AC"
-                    then -- Str Dex Int Wis  (Bard: Fanfare of Power, Oracel: Boon of Resurgence)
+                    then -- Str Dex Int Wis  (Bard: Fanfare of Power, Oracle: Boon of Resurgence)
                         Stat_Buff_3 = true
                     end
                 end
@@ -181,16 +181,16 @@ local function check_target(target)
                 missing_debuffs = missing_debuffs .. " 5% Crit Chance (Archon Bm Mystic) \n"
             end
             if Stat_Buff_2 == false then
-                missing_debuffs = missing_debuffs .. " 5% Mainstats (Bard Oracel) \n"
+                missing_debuffs = missing_debuffs .. " 5% Mainstats (Bard Oracle) \n"
             end
             if AP_SP_Buff_2 == false then
-                missing_debuffs = missing_debuffs .. " Ap Sp (Archon Bard Oracel Mystic) \n"
+                missing_debuffs = missing_debuffs .. " Ap Sp (Archon Bard Oracle Mystic) \n"
             end
             if Stat_Buff_1 == false then
                 missing_debuffs = missing_debuffs .. " Str Dex Int Wis (Archon Bm) \n"
             end
             if Stat_Buff_3 == false then
-                missing_debuffs = missing_debuffs .. " Str Dex Int Wis (Bard Oracel) \n"
+                missing_debuffs = missing_debuffs .. " Str Dex Int Wis (Bard Oracle) \n"
             end
         end
     end
